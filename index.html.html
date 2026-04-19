@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jonathan V. Rydberg | Piloting My Career to the Next Waypoint</title>
+  <style>
+    :root {
+      --bg: #151515;
+      --bg-2: #1c1a19;
+      --panel: rgba(255, 255, 255, 0.06);
+      --panel-strong: rgba(255, 255, 255, 0.08);
+      --panel-border: rgba(255, 255, 255, 0.12);
+      --text: #f4f1eb;
+      --muted: #b8afa3;
+      --muted-2: #978f84;
+      --accent: #ba8a57;
+      --accent-2: #8f6942;
+      --fms: #f3cf87;
+      --fms-dim: rgba(243, 207, 135, 0.82);
+      --success: #d6e8c2;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+      --shadow-soft: 0 16px 40px rgba(0, 0, 0, 0.22);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 16px;
+      --max: 1260px;
+      --header-h: 80px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top right, rgba(186, 138, 87, 0.18), transparent 24%),
+        radial-gradient(circle at 20% 15%, rgba(186, 138, 87, 0.08), transparent 22%),
+        linear-gradient(180deg, #221c18 0%, #151515 38%, #121212 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 12% 22%, rgba(255,255,255,0.04), transparent 20%),
+        radial-gradient(circle at 88% 12%, rgba(243, 207, 135, 0.05), transparent 16%);
+      z-index: 0;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(17, 17, 17, 0.56);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .site-header-inner {
+      min-height: var(--header-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .brand-name {
+      font-size: 0.94rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    .brand-sub {
+      font-size: 0.77rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      color: var(--muted);
+      font-size: 0.9rem;
+      transition: color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+      padding: 0.55rem 0.8rem;
+      border-radius: 999px;
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible,
+    .nav a.is-active {
+      color: var(--text);
+      background: rgba(255,255,255,0.06);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .hero {
+      padding: 3rem 0 4rem;
+      min-height: calc(100vh - var(--header-h));
+      display: grid;
+      align-items: center;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(360px, 0.8fr);
+      gap: 2rem;
+      align-items: stretch;
+    }
+
+    .hero-copy {
+      padding: 1rem 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 1.15rem;
+      color: var(--accent);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-weight: 800;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 46px;
+      height: 1px;
+      background: var(--accent);
+      opacity: 0.9;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      max-width: 10ch;
+      text-wrap: balance;
+    }
+
+    .hero-tagline {
+      margin: 1.3rem 0 0;
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+      line-height: 1.6;
+      color: var(--text);
+      max-width: 46rem;
+      font-weight: 600;
+    }
+
+    .hero-anchor {
+      margin: 1rem 0 0;
+      max-width: 48rem;
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: var(--muted);
+    }
+
+    .hero-support {
+      margin: 1rem 0 0;
+      max-width: 48rem;
+      font-size: 1.02rem;
+      line-height: 1.9;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.95rem;
+      margin-top: 2rem;
+    }
+
+    .btn {
+      min-height: 52px;
+      padding: 0 1.15rem;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .btn-primary {
+      background: var(--text);
+      color: #111;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      box-shadow: 0 18px 34px rgba(255,255,255,0.12);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: var(--text);
+    }
+
+    .hero-right {
+      display: grid;
+      gap: 1rem;
+      grid-template-rows: auto 1fr;
+    }
+
+    .portrait-card {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      border: 1px solid var(--panel-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      min-height: 300px;
+      isolation: isolate;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .portrait-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 32px 68px rgba(0, 0, 0, 0.42);
+    }
+
+    .portrait-card::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 40%;
+      background: linear-gradient(180deg, transparent, rgba(15,15,15,0.78));
+      pointer-events: none;
+    }
+
+    .portrait-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      aspect-ratio: 4 / 3;
+      filter: saturate(0.92) contrast(1.03);
+    }
+
+    .portrait-badge {
+      position: absolute;
+      left: 1rem;
+      bottom: 1rem;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.7rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(10,10,10,0.56);
+      border: 1px solid rgba(255,255,255,0.12);
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow-soft);
+      color: var(--text);
+      font-size: 0.86rem;
+    }
+
+    .portrait-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(186, 138, 87, 0.12);
+    }
+
+    .hero-panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      border: 1px solid var(--panel-border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      min-height: 510px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(243,207,135,0.035), transparent 42%);
+      pointer-events: none;
+    }
+
+    .hero-panel-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.15rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      position: relative;
+      z-index: 1;
+    }
+
+    .panel-title {
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .panel-status {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.84rem;
+      color: var(--fms);
+      letter-spacing: 0.08em;
+    }
+
+    .fms-screen {
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.34)),
+        radial-gradient(circle at top, rgba(243, 207, 135, 0.08), transparent 34%),
+        #100f0d;
+      color: var(--fms);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .fms-screen::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.012),
+        rgba(255,255,255,0.012) 1px,
+        transparent 1px,
+        transparent 4px
+      );
+      mix-blend-mode: screen;
+      opacity: 0.22;
+      pointer-events: none;
+    }
+
+    .fms-header,
+    .fms-footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.84rem;
+      letter-spacing: 0.08em;
+      position: relative;
+      z-index: 1;
+    }
+
+    .fms-menu {
+      display: grid;
+      gap: 0.45rem;
+      margin: 1.15rem 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .fms-link {
+      display: block;
+      border-radius: 12px;
+      transition: transform 0.18s ease;
+    }
+
+    .fms-link:hover,
+    .fms-link:focus-visible {
+      transform: translateX(3px);
+      outline: none;
+    }
+
+    .fms-link.is-active .fms-item,
+    .fms-link:hover .fms-item,
+    .fms-link:focus-visible .fms-item {
+      background: rgba(243, 207, 135, 0.08);
+      border-color: rgba(243, 207, 135, 0.24);
+      color: #ffe7b1;
+      box-shadow: inset 0 0 0 1px rgba(243, 207, 135, 0.05);
+    }
+
+    .fms-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: center;
+      padding: 0.65rem 0.7rem;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .fms-left::before { content: "< "; }
+    .fms-right::after { content: " >"; }
+
+    .fms-muted {
+      color: rgba(243, 207, 135, 0.72);
+    }
+
+    .fms-bottom {
+      display: grid;
+      gap: 0.75rem;
+      font-size: 0.77rem;
+      line-height: 1.7;
+      color: var(--fms-dim);
+      position: relative;
+      z-index: 1;
+    }
+
+    .fms-route {
+      color: rgba(243, 207, 135, 0.92);
+    }
+
+    .section {
+      padding: 5.25rem 0;
+      scroll-margin-top: calc(var(--header-h) + 20px);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 2rem;
+      align-items: start;
+      margin-bottom: 2rem;
+    }
+
+    .section-label {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 0.8rem;
+      font-weight: 800;
+      padding-top: 0.45rem;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.3rem);
+      line-height: 1.04;
+      letter-spacing: -0.04em;
+      max-width: 14ch;
+      text-wrap: balance;
+    }
+
+    .section-head p {
+      margin: 0.95rem 0 0;
+      color: var(--muted);
+      line-height: 1.9;
+      max-width: 52rem;
+      font-size: 1rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .card,
+    .timeline-card,
+    .principle,
+    .spin-recovery {
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .card:hover,
+    .timeline-card:hover,
+    .principle:hover,
+    .spin-recovery:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255,255,255,0.18);
+      box-shadow: 0 30px 68px rgba(0, 0, 0, 0.32);
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: var(--radius-lg);
+      padding: 1.3rem;
+      box-shadow: var(--shadow);
+    }
+
+    .card-label {
+      margin-bottom: 0.8rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.76rem;
+      font-weight: 800;
+    }
+
+    .card h3 {
+      margin: 0 0 0.55rem;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 1rem;
+      margin-top: 2.25rem;
+    }
+
+    .timeline-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+      border: 1px solid var(--panel-border);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 1.35rem;
+      box-shadow: var(--shadow);
+    }
+
+    .timeline-phase {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.8rem;
+      font-weight: 800;
+      padding-top: 0.2rem;
+    }
+
+    .timeline-card h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .timeline-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.85;
+    }
+
+    .spin-recovery {
+      background:
+        radial-gradient(circle at top right, rgba(186, 138, 87, 0.08), transparent 20%),
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+      border: 1px solid var(--panel-border);
+      border-radius: var(--radius-xl);
+      padding: 1.6rem;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 1.35rem;
+      margin-top: 2.5rem;
+    }
+
+    .spin-title {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.8rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .spin-title::before {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .spin-copy h3 {
+      margin: 0;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      max-width: 16ch;
+      text-wrap: balance;
+    }
+
+    .spin-copy p {
+      margin: 1rem 0 0;
+      color: var(--muted);
+      line-height: 1.9;
+      max-width: 52rem;
+    }
+
+    .spin-highlight {
+      margin-top: 1.1rem;
+      color: var(--success);
+      font-weight: 700;
+    }
+
+    .spin-panel {
+      background:
+        linear-gradient(180deg, rgba(12, 12, 12, 0.55), rgba(12, 12, 12, 0.35)),
+        #12100d;
+      border: 1px solid rgba(243, 207, 135, 0.14);
+      border-radius: 18px;
+      padding: 1rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      color: var(--fms);
+      display: grid;
+      gap: 0.9rem;
+      align-content: start;
+      box-shadow: inset 0 0 0 1px rgba(243,207,135,0.03);
+    }
+
+    .spin-panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px dashed rgba(243, 207, 135, 0.16);
+    }
+
+    .spin-steps {
+      display: grid;
+      gap: 0.75rem;
+      font-size: 0.8rem;
+    }
+
+    .spin-step {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 0.8rem;
+      padding-bottom: 0.55rem;
+      border-bottom: 1px dashed rgba(243, 207, 135, 0.12);
+    }
+
+    .spin-step:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .spin-step strong {
+      color: var(--fms);
+      font-weight: 700;
+    }
+
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 2.25rem;
+    }
+
+    .principle {
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: var(--radius-md);
+      padding: 1.15rem;
+      box-shadow: var(--shadow);
+    }
+
+    .principle h3 {
+      margin: 0 0 0.45rem;
+      font-size: 1.05rem;
+    }
+
+    .principle p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .footer {
+      padding: 2rem 0 4rem;
+      color: var(--muted-2);
+      font-size: 0.92rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      will-change: opacity, transform;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal,
+      .reveal.is-visible,
+      .card,
+      .timeline-card,
+      .principle,
+      .spin-recovery,
+      .portrait-card,
+      .btn,
+      .nav a,
+      .fms-link {
+        transition: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+      }
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .spin-recovery,
+      .section-head,
+      .timeline-card,
+      .grid-2,
+      .principles {
+        grid-template-columns: 1fr;
+      }
+
+      .section-label {
+        padding-top: 0;
+      }
+
+      .hero-right {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+
+      .portrait-card,
+      .hero-panel {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .nav { display: none; }
+      .hero { min-height: auto; padding-top: 2rem; }
+      .hero-right { grid-template-columns: 1fr; }
+      .portrait-image { aspect-ratio: 3 / 2; }
+      .site-header-inner { min-height: 72px; }
+      :root { --header-h: 72px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container site-header-inner">
+      <div class="brand">
+        <div class="brand-name">Jonathan V. Rydberg</div>
+        <div class="brand-sub">Pilot • Foreign Area Officer • Systems-Minded Leader</div>
+      </div>
+
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#course">Charting the Course</a>
+        <a href="#crm">Career Resource Management</a>
+        <a href="#rules">Flight Rules</a>
+        <a href="#waypoint">Next Waypoint</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero reveal">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Navigating a Deliberate Transition</div>
+          <h1>Piloting my career to the next waypoint.</h1>
+          <p class="hero-tagline">
+            Building a professional second chapter shaped by structured thinking, international engagement, and high-accountability leadership.
+          </p>
+          <p class="hero-anchor">
+            My work has been shaped by aviation, international engagement, and leadership in structured, high-accountability environments.
+          </p>
+          <p class="hero-support">
+            I am currently serving in the military as a pilot and Foreign Area Officer, while deliberately building toward a future in consulting. This site is designed like a flight plan: where I started, what I am carrying forward, and how I am preparing for the next leg.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#course">Chart the Course</a>
+            <a class="btn btn-secondary" href="#crm">Explore the Frameworks</a>
+          </div>
+        </div>
+
+        <div class="hero-right reveal">
+          <figure class="portrait-card">
+            <img class="portrait-image" src="C:\Users\egoch\Desktop\jvrydberg.com\charcoal background.png" alt="Portrait of Jonathan V. Rydberg against a charcoal background" />
+            <!--<figcaption class="portrait-badge">
+              <span class="portrait-dot"></span>
+              Professional transition in progress
+            </figcaption>-->
+          </figure>
+
+          <aside class="hero-panel" aria-label="Career navigation index">
+            <div class="hero-panel-top">
+              <div class="panel-title">Career Navigation Index</div>
+              <div class="panel-status">ACTIVE ROUTE</div>
+            </div>
+
+            <div class="fms-screen">
+              <div>
+                <div class="fms-header">
+                  <span>NAV INDEX</span>
+                  <span>1/1</span>
+                </div>
+
+                <div class="fms-menu">
+                  <a class="fms-link" href="#about" data-section="about">
+                    <div class="fms-item">
+                      <span class="fms-left">ABOUT</span>
+                      <span class="fms-right">PROFILE</span>
+                    </div>
+                  </a>
+                  <a class="fms-link" href="#course" data-section="course">
+                    <div class="fms-item">
+                      <span class="fms-left">COURSE</span>
+                      <span class="fms-right">ROUTE</span>
+                    </div>
+                  </a>
+                  <a class="fms-link" href="#present-position" data-section="present-position">
+                    <div class="fms-item">
+                      <span class="fms-left">PRESENT POS</span>
+                      <span class="fms-right">CURRENT</span>
+                    </div>
+                  </a>
+                  <a class="fms-link" href="#crm" data-section="crm">
+                    <div class="fms-item">
+                      <span class="fms-left">CRM</span>
+                      <span class="fms-right">SYSTEMS</span>
+                    </div>
+                  </a>
+                  <a class="fms-link" href="#spin-recovery" data-section="spin-recovery">
+                    <div class="fms-item">
+                      <span class="fms-left">SPIN REC</span>
+                      <span class="fms-right">RECOVER</span>
+                    </div>
+                  </a>
+                  <a class="fms-link" href="#rules" data-section="rules">
+                    <div class="fms-item">
+                      <span class="fms-left">RULES</span>
+                      <span class="fms-right">PRINCIPLES</span>
+                    </div>
+                  </a>
+                  <a class="fms-link" href="#waypoint" data-section="waypoint">
+                    <div class="fms-item">
+                      <span class="fms-left">NEXT WPT</span>
+                      <span class="fms-right">FUTURE</span>
+                    </div>
+                  </a>
+                  <a class="fms-link" href="#contact" data-section="contact">
+                    <div class="fms-item">
+                      <span class="fms-left">CONTACT</span>
+                      <span class="fms-right">ARRIVAL</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              <div class="fms-bottom">
+                <div class="fms-footer-top">
+                  <span>ROUTE STATUS</span>
+                  <span class="fms-muted">STABLE</span>
+                </div>
+                <div class="fms-route">TRACK: AVIATION → INTERNATIONAL ENGAGEMENT → SYSTEMS THINKING → CONSULTING</div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section reveal">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-label">About</div>
+          <div>
+            <h2>Aviation is the undertone. Professional identity is the signal.</h2>
+            <p>
+              This site is not intended to present a narrow pilot identity. It is meant to show the broader shape of my work: disciplined execution, international engagement, trusted relationships, and a growing body of systems and decision frameworks designed for high-stakes environments.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <article class="card">
+            <div class="card-label">Perspective</div>
+            <h3>Pilot and operator</h3>
+            <p>
+              Aviation built the habits of precision, preparation, and calm execution under pressure. It remains one of the clearest influences on how I think about leadership and performance.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-label">Context</div>
+            <h3>Foreign Area Officer and international partner</h3>
+            <p>
+              My work also includes international relationships, military-to-military engagement, and exposure to foreign military sales and related strategic coordination. That broader context shapes how I think about credibility, trust, and long-term alignment.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="course" class="section reveal">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-label">Charting the Course</div>
+          <div>
+            <h2>A transition built in phases, not improvised in public.</h2>
+            <p>
+              The next five years are not a vague pivot. They are a deliberate route. Each phase builds on what came before: operational experience, leadership in structured environments, international engagement, and a growing consulting capability rooted in clarity and disciplined execution.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-card">
+            <div class="timeline-phase">Origin</div>
+            <div>
+              <h3>Military service and operational credibility</h3>
+              <p>
+                A foundation built on disciplined training, aviation standards, leadership responsibility, and the expectation that performance must hold up under real conditions.
+              </p>
+            </div>
+          </article>
+
+          <article id="present-position" class="timeline-card">
+            <div class="timeline-phase">Present Position</div>
+            <div>
+              <h3>Leadership, international engagement, and structured problem-solving</h3>
+              <p>
+                My current work sits at the intersection of aviation, regional engagement, military relationships, and systems thinking. It demands trust, clarity, and the ability to move carefully through complex environments.
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-card">
+            <div class="timeline-phase">Transition</div>
+            <div>
+              <h3>Framework design, writing, teaching, and digital systems</h3>
+              <p>
+                I am building the assets of a second career now: frameworks that clarify decisions, systems that reduce drift, and a body of work that can support consulting and advising over time.
+              </p>
+            </div>
+          </article>
+
+          <article id="waypoint" class="timeline-card">
+            <div class="timeline-phase">Next Waypoint</div>
+            <div>
+              <h3>Consulting grounded in calm judgment and credible structure</h3>
+              <p>
+                The goal is a professional second chapter helping leaders and organizations think more clearly, prepare more deliberately, and recover faster when conditions move outside the expected envelope.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="crm" class="section reveal">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-label">Career Resource Management</div>
+          <div>
+            <h2>Capabilities built for responsibility, transition, and advisory work.</h2>
+            <p>
+              I think of career preparation the way aviation thinks about resource management: not as a single skill, but as a disciplined integration of judgment, planning, communication, and recovery. The goal is not only forward motion. It is staying coherent, effective, and adaptable as complexity increases.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <article class="card">
+            <div class="card-label">Frameworks</div>
+            <h3>Decision systems that reduce drift</h3>
+            <p>
+              I build frameworks that help people structure choices, preserve perspective, and keep important decisions from being driven by noise, urgency, or emotional overcorrection.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-label">Preparation</div>
+            <h3>Professional assets with long-term utility</h3>
+            <p>
+              Writing, teaching, structured tools, and reusable intellectual systems are all part of how I am preparing for the next phase. They are not side projects. They are components of a durable second career.
+            </p>
+          </article>
+        </div>
+
+        <div id="spin-recovery" class="spin-recovery">
+          <div class="spin-copy">
+            <div class="spin-title">Spin Recovery</div>
+            <h3>Design for stability. Train for recovery.</h3>
+            <p>
+              We build systems to stay well within safe operating envelopes. We train to avoid failure, not to expect it. But reality does not always respect design. Conditions change. Assumptions fail. Small deviations compound.
+            </p>
+            <p>
+              In aviation, a spin is not where you plan to be. But you train to recognize it immediately and recover without hesitation. The same principle applies to leadership, decision-making, and advising. The priority is not performance theater. The priority is recognizing instability early, returning to a wings-level condition, and stabilizing direction before consequences become irreversible.
+            </p>
+            <p>
+              That is one of the clearest ways I think about frameworks and consulting: helping people identify when a system has entered an unsafe state, shorten the distance between awareness and action, and execute the procedures needed to regain a safe configuration.
+            </p>
+            <p class="spin-highlight">
+              The difference between disruption and disaster is often the ability to recover quickly and deliberately.
+            </p>
+          </div>
+
+          <aside class="spin-panel" aria-label="Spin recovery logic panel">
+            <div class="spin-panel-head">
+              <span>RECOVERY LOGIC</span>
+              <span>ACTIVE</span>
+            </div>
+
+            <div class="spin-steps">
+              <div class="spin-step">
+                <strong>STATE</strong>
+                <span>Recognize that the system is outside its intended envelope.</span>
+              </div>
+              <div class="spin-step">
+                <strong>CUE</strong>
+                <span>Separate signal from noise before reacting emotionally.</span>
+              </div>
+              <div class="spin-step">
+                <strong>ACT</strong>
+                <span>Execute a clear, practiced recovery procedure.</span>
+              </div>
+              <div class="spin-step">
+                <strong>STAB</strong>
+                <span>Return to a stable, wings-level condition.</span>
+              </div>
+              <div class="spin-step">
+                <strong>TRACK</strong>
+                <span>Re-establish direction before pursuing performance again.</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="rules" class="section reveal">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-label">Flight Rules</div>
+          <div>
+            <h2>Principles for how I work, lead, and build.</h2>
+            <p>
+              These are the operating assumptions underneath the visible work. They shape how I think about leadership, advisory work, framework design, and the transition into consulting.
+            </p>
+          </div>
+        </div>
+
+        <div class="principles">
+          <article class="principle">
+            <h3>Clarity over noise</h3>
+            <p>
+              Complexity is inevitable. Confusion is not. Good systems reduce ambiguity without oversimplifying reality.
+            </p>
+          </article>
+
+          <article class="principle">
+            <h3>Structure over drift</h3>
+            <p>
+              Progress becomes more reliable when it is supported by disciplined frameworks rather than motivation alone.
+            </p>
+          </article>
+
+          <article class="principle">
+            <h3>Credibility over theater</h3>
+            <p>
+              High-trust environments reward steadiness, judgment, and follow-through more than performance or posturing.
+            </p>
+          </article>
+
+          <article class="principle">
+            <h3>Recovery over denial</h3>
+            <p>
+              Mature systems do not assume perfect conditions. They prepare for disruption and practice returning to control early.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section reveal">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-label">Contact</div>
+          <div>
+            <h2>A simple arrival point.</h2>
+            <p>
+              email@jvrydberg.com for mentorship and networking.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">Jonathan V. Rydberg — Built with direction, not drift.</div>
+  </footer>
+
+  <script>
+    const revealItems = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.16 });
+
+    revealItems.forEach((item) => revealObserver.observe(item));
+
+    const trackedSections = ['about', 'course', 'present-position', 'crm', 'spin-recovery', 'rules', 'waypoint', 'contact']
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+
+    const navLinks = document.querySelectorAll('.nav a');
+    const fmsLinks = document.querySelectorAll('.fms-link');
+
+    const setActive = (id) => {
+      navLinks.forEach((link) => {
+        const match = link.getAttribute('href') === `#${id}` || (id === 'present-position' && link.getAttribute('href') === '#course');
+        link.classList.toggle('is-active', match);
+      });
+
+      fmsLinks.forEach((link) => {
+        const target = link.dataset.section;
+        link.classList.toggle('is-active', target === id);
+      });
+    };
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+      if (visible) {
+        setActive(visible.target.id);
+      }
+    }, {
+      rootMargin: '-20% 0px -55% 0px',
+      threshold: [0.15, 0.3, 0.55]
+    });
+
+    trackedSections.forEach((section) => sectionObserver.observe(section));
+    setActive('about');
+  </script>
+</body>
+</html>
