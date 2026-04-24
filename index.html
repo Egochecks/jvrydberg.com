@@ -1202,6 +1202,25 @@
 
     trackedSections.forEach((section) => sectionObserver.observe(section));
     setActive('about');
+
+  let buffer = "";
+
+  document.addEventListener("keydown", (e) => {
+    const tag = document.activeElement.tagName.toLowerCase();
+
+    // ignore typing in inputs/textareas
+    if (tag === "input" || tag === "textarea") return;
+
+    buffer += e.key.toLowerCase();
+
+    if (buffer.includes("cdu")) {
+      window.location.href = "https://dash.jvrydberg.com/fms/status";
+    }
+
+    if (buffer.length > 10) {
+      buffer = buffer.slice(-10);
+    }
+  });
   </script>
 </body>
 </html>
